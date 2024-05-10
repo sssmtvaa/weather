@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#08464E"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/logo"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/user_field"
+        android:layout_width="334dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/logo"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="124dp"
+        android:backgroundTint="@color/colorAccent"
+        android:ems="10"
+        android:hint="@string/hint_user_field"
+        android:inputType="text"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <Button
+        android:id="@+id/main_btn"
+        android:layout_width="166dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/user_field"
+        android:layout_marginTop="57dp"
+        android:backgroundTint="@color/colorAccent"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginHorizontal="125dp"
+        android:text="@string/main_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_field" />
+
+    <TextView
+        android:id="@+id/result_info"
+        android:layout_width="259dp"
+        android:layout_height="224dp"
+        android:layout_below="@id/main_btn"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="140dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textAlignment="center"
+        android:textColor="@color/textColorHint"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_btn" />
+
+    <ImageView
+        android:id="@+id/icon_image"
+        android:layout_width="136dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="460dp"/>
+
+
+</RelativeLayout>
