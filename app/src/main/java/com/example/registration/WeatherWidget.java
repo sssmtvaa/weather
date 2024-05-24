@@ -41,24 +41,24 @@ public class WeatherWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget);
-            views.setViewVisibility(R.id.progress_bar, View.VISIBLE); // Показать индикатор загрузки
+            views.setViewVisibility(R.id.progress_bar, View.VISIBLE); //показывает прелоудер.Вызывается при создании виджета и при обновлении
 
             Intent intent = new Intent(context, WeatherWidget.class);
             intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
 
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-            views.setOnClickPendingIntent(R.id.update_button, pendingIntent);
+            views.setOnClickPendingIntent(R.id.update_button, pendingIntent);//было ли касание
 
             updateWidgetData(context, views, appWidgetIds);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
-    }
+    }//устанавливает обработчик наж на кнопку и вызывает метод апдейт для обновления виджета с помощью менеджер
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(Context context, Intent intent) {//для получения данных.
         super.onReceive(context, intent);
-
+        //обрабатывает действие , которое указывает на обновление
         if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(intent.getAction())) {
             int[] appWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
             if (appWidgetIds != null) {
@@ -71,13 +71,13 @@ public class WeatherWidget extends AppWidgetProvider {
                 for (int appWidgetId : appWidgetIds) {
                     appWidgetManager.updateAppWidget(appWidgetId, views);
                 }
-            }
+            }//также вызывает метод апдейт для обновления данных вж и обновляет отображение виджета для всех аппвиджет
         }
     }
 
     private void updateWidgetData(final Context context, final RemoteViews views, final int[] appWidgetIds) {
         final LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        if (locationManager != null) {
+        if (locationManager != null) {//получение новых данных о погоде
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                         context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
